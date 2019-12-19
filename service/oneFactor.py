@@ -79,7 +79,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-l",
         "--listen",
-        default="localhost",
+        default="0.0.0.0",
         help="Specify the IP address on which the server listens",
     )
     parser.add_argument(
