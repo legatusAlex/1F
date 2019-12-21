@@ -6,7 +6,7 @@ COPY requirements.txt /requirements.txt
 RUN pip install --no-cache-dir -r /requirements.txt
 FROM base
 COPY --from=builder /install /usr/local
-COPY oneFactor.py /app/
-EXPOSE 50001/tcp
 WORKDIR /app
+COPY oneFactor.py .
+EXPOSE 50001/tcp
 CMD ["python", "./oneFactor.py"]
