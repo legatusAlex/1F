@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rate-v1
+  namespace: onefactor
+  labels:
+    app: rate
+    version: v1
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: rate
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: rate
+        version: v1
+    spec:
+      serviceAccountName: rate-account
+      containers:
+      - name: rate
+        image: lexcorp1988/onef:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 50001
